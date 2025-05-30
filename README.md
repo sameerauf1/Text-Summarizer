@@ -1,70 +1,95 @@
-# Getting Started with Create React App
+Here’s a clean and descriptive `README.md` you can use for your AI text summarizer project that uses Flask and React:
+
+---
+
+# 🧠 AI Text Summarizer (React + Flask)
+
+This is a simple full-stack web application that allows users to input a block of text and select the desired summary length (short, medium, or detailed). The frontend sends this data to a Flask backend, which uses a large language model (LLM) via the OpenAI API to return a summarized version of the input.
+
+This project was mainly built to get my feet wet with Flask and practice full-stack development with React.
+
+---
+
+## 🚀 Getting Started
+
+### Frontend Setup (React)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+#### 📦 Available Scripts
 
-In the project directory, you can run:
+In the `frontend/` directory, run:
 
-### `npm start`
+```bash
+npm install
+npm start
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* Opens the app in development mode at `http://localhost:3000`.
+* Hot-reloads on file save.
+* Errors and linter messages shown in the browser console.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+### Backend Setup (Flask)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Make sure Python 3 and pip are installed.
 
-### `npm run build`
+In the `backend/` directory, create a `.env` file and add your OpenAI key:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+OPENAI_API_KEY=your_openai_key_here
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Then install dependencies and start the Flask server:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+pip install -r requirements.txt
+python app.py
+```
 
-### `npm run eject`
+* Flask will run on `http://localhost:5000`
+* The React frontend communicates with the `/api/summarize` endpoint
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## ✨ Features
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+* React frontend with a simple UI
+* Dropdown to select summary length: short, medium, detailed
+* Flask backend connected to OpenAI's GPT API
+* CORS enabled to allow frontend-backend communication
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## 🗂 File Structure
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+project-root/
+├── backend/
+│   ├── app.py         # Flask backend
+│   └── .env           # API Key for OpenAI
+├── frontend/
+│   ├── src/
+│   │   ├── App.js
+│   │   └── components/TextInput.js
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+## 🛠 Technologies Used
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+* React
+* Flask
+* OpenAI GPT-3.5-turbo
+* Axios
+* dotenv
+* CORS
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 📝 Notes
 
-### Making a Progressive Web App
+* This project is for learning purposes and not optimized for production.
+* CORS settings are enabled for local development; restrict in production.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
