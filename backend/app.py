@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
 import os
-import openai
+from openai import OpenAI  # Add this import
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -9,7 +9,8 @@ load_dotenv()
 app = Flask(__name__)
 CORS(app)
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
+# Initialize OpenAI client
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 @app.route('/members')
 def members():
@@ -30,8 +31,27 @@ def summarize_text():
         text = data.get('text')
         length = data.get('length', 'medium')
         
-        # Example response
-        return jsonify({"summary": f"Summary of '{text[:30]}...' with length '{length}'."})
+        if not text:
+            return jsonify({'error': 'No text provided'}), 400
+
+        length_prompts = {
+            'short': 'Summarize this very briefly in 1-2 sentences: ',
+            'medium': 'Provide a concise summary in 3-5 sentences: ',
+            'detailed': 'Provide a detailed summary while keeping all key points: '
+        }
+
+        response = client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "system", "content": "You are a helpful AI assistant that summarizes text."},
+                {"role": "user", "content": f"{length_prompts[length]}{text}"}
+            ],
+            temperature=0.5
+        )
+
+        summary = response.choices[0].message.content
+        return jsonify({"summary": summary})
+
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
