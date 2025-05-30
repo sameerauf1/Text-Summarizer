@@ -1,7 +1,3 @@
-Here’s a clean and descriptive `README.md` you can use for your AI text summarizer project that uses Flask and React:
-
----
-
 # 🧠 AI Text Summarizer (React + Flask)
 
 This is a simple full-stack web application that allows users to input a block of text and select the desired summary length (short, medium, or detailed). The frontend sends this data to a Flask backend, which uses a large language model (LLM) via the OpenAI API to return a summarized version of the input.
