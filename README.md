@@ -1,8 +1,9 @@
 # 🧠 AI Text Summarizer (React + Flask)
 
-This is a simple full-stack web application that allows users to input a block of text and select the desired summary length (short, medium, or detailed). The frontend sends this data to a Flask backend, which uses a large language model (LLM) via the OpenAI API to return a summarized version of the input.
+This is a simple full-stack web application that allows users to input a block of text and select the desired summary length (concise, balanced, comprehensive). The frontend sends this data to a Flask backend, which uses a large language model (LLM) via the OpenAI API to return a summarized version of the input.
 
 This project was mainly built to get my feet wet with Flask and practice full-stack development with React.
+<img width="1440" alt="image" src="https://github.com/user-attachments/assets/7409f0f5-e697-45d2-8567-befc08d38d6f" />
 
 ---
 
